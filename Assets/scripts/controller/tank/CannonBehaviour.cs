@@ -8,8 +8,11 @@ public class CannonBehaviour : MonoBehaviour {
     public Rigidbody rocketPrefab;
     public float missileForce = 20f;
 
+
     private void Update() {
-        if(Input.GetButtonDown("Fire1")) {
+        if(Input.GetButtonDown("Fire2")) {
+            AudioSource explosionAudio = GetComponent<AudioSource>();
+            explosionAudio.Play();
             Rigidbody rocket = Instantiate(rocketPrefab, transform.position, transform.rotation);
             rocket.AddForce(transform.forward * missileForce, ForceMode.Impulse);
         }
