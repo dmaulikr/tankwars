@@ -6,7 +6,8 @@ using TankWars.Context;
 using TankWars.Model;
 
 public class BoxBehaviour : MonoBehaviour {
-    public GameContext context;
+    [SerializeField]
+    private GameContext context;
 
     private void OnCollisionEnter(Collision collision) {
         GameObject collisionSource = collision.gameObject;

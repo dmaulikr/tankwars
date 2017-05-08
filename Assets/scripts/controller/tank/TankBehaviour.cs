@@ -27,7 +27,10 @@ namespace TankWars.Controller.Tank {
             }
             if(Input.GetKey(KeyCode.RightArrow)) {
                 transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
-            }  
+            }
+
+
+            
         }
     }
 }
