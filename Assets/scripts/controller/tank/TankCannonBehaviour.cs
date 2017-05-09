@@ -6,7 +6,7 @@ public class TankCannonBehaviour : MonoBehaviour {
 
 
     [SerializeField]
-    private int moveSmooth = 100;
+    private int moveSmooth = 300;
 	
 	// Update is called once per frame
 	void Update () {

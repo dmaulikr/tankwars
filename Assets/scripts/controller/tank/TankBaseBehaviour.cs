@@ -5,7 +5,7 @@ using UnityEngine;
 public class TankBaseBehaviour : MonoBehaviour {
 
     [SerializeField]
-    private int moveSmooth = 100;
+    private int moveSmooth = 200;
     
     // Use this for initialization
 	void Start () {
