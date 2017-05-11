@@ -8,7 +8,11 @@ namespace TankWars.Controller.Tank {
 
     public class TankBehaviour : MonoBehaviour {
 
-        public GameContext context;
+        [SerializeField]
+        private GameObject explosionPrefab;
+
+        [SerializeField]
+        private GameContext context;
 
         // Movement
         public float moveSpeed = 10f;
@@ -28,9 +32,36 @@ namespace TankWars.Controller.Tank {
             if(Input.GetKey(KeyCode.RightArrow)) {
                 transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
             }
+        }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            MissileBehaviour missile = collision.gameObject.GetComponent<MissileBehaviour>();
+            GraphicExplosion missileExplosion = collision.gameObject.GetComponent<GraphicExplosion>();
+            LandmineBehaviour landmine = collision.gameObject.GetComponent<LandmineBehaviour>();
 
-            
+            if (missile != null || missileExplosion != null || landmine != null)
+            {
+                OnImpact();
+            }
+
+        }
+
+        private void OnImpact()
+        {
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
+            explosion.SetActive(true);
+            Debug.Log("Impact recieved!");
+        }
+
+        private void OnDestruction()
+        {
+            /*
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
+            explosion.SetActive(true);
+            Destroy(gameObject);
+             */
+            Debug.Log("Tank destroyed!");
         }
     }
 }
