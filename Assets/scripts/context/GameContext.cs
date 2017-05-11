@@ -6,12 +6,19 @@ using System;
 using TankWars.Factory;
 using TankWars.Model;
 using TankWars.Service;
+using TankWars.Controller.Timer;
 
 namespace TankWars.Context {
     public class GameContext : MonoBehaviour, ITankFactory, IGoalsFactory {
 
         private ITankFactory tankFactory;
         private IGoalsFactory goalsFactory;
+        private ITimer timer;
+
+        [SerializeField]
+        private TimerBehaviour timerUI;
+        [SerializeField]
+        private ScoreBehaviour scoreUI;
 
         private List<GameObject> magickPortalList;
         private TeleportationService teleporTationService;
@@ -41,7 +48,22 @@ namespace TankWars.Context {
             getBoxGoal().onGoalAchieved += BoxesGoalAchieved;
             getPathGoal().onGoalAchieved += PathsGoalAchieved;
 
+            timer = new Timer();
+            timer.OnTimeChange += Timer_OnTimeChange;
+            timer.OnTimeFinished += Timer_OnTimeFinished;
+
             Debug.Log("Contexto cargado");
+        }
+
+        private void Timer_OnTimeFinished(object source) {
+            ITimer timer = (ITimer)source;
+            timer.OnTimeFinished -= Timer_OnTimeFinished;
+            timer.OnTimeChange -= Timer_OnTimeChange;
+        }
+
+        private void Timer_OnTimeChange(float millisecondsRemaining) {
+            Debug.Log("xdxx");
+            timerUI.RemainingTime = millisecondsRemaining;
         }
 
         private void BoxesGoalAchieved(BoxGoal sender) {
