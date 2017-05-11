@@ -23,6 +23,11 @@ namespace TankWars.Controller.Timer {
             StartTimer(DEFAULT_TICK_INTERVAL);
         }
 
+        public Timer(float totalTimeInMilliseconds) {
+            timeRemaining = totalTimeInMilliseconds;
+            StartTimer(DEFAULT_TICK_INTERVAL);
+        }
+
         public Timer(float totalTimeInMilliseconds, float intervalInMilliseconds) {
             timeRemaining = totalTimeInMilliseconds;
             StartTimer(intervalInMilliseconds);

@@ -63,6 +63,11 @@ namespace TankWars.Controller.Tank {
 
         }
 
+        public void TriggerDestruction() {
+            tank.AddDamage(tank.Life);
+            OnImpact();
+        }
+
         private void OnImpact()
         {
             GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);

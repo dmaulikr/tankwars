@@ -7,6 +7,7 @@ using TankWars.Factory;
 using TankWars.Model;
 using TankWars.Service;
 using TankWars.Controller.Timer;
+using TankWars.Controller.Tank;
 
 namespace TankWars.Context {
     public class GameContext : MonoBehaviour, ITankFactory, IGoalsFactory {
@@ -15,10 +16,14 @@ namespace TankWars.Context {
         private IGoalsFactory goalsFactory;
         private ITimer timer;
 
+        private const int DEFAULT_MISSION_TIME = 10 * 1000;
+
         [SerializeField]
         private TimerBehaviour timerUI;
         [SerializeField]
         private ScoreBehaviour scoreUI;
+        [SerializeField]
+        private TankBehaviour tankUI;
 
         private List<GameObject> magickPortalList;
         private TeleportationService teleporTationService;
@@ -48,7 +53,7 @@ namespace TankWars.Context {
             getBoxGoal().onGoalAchieved += BoxesGoalAchieved;
             getPathGoal().onGoalAchieved += PathsGoalAchieved;
 
-            timer = new Timer();
+            timer = new Timer(DEFAULT_MISSION_TIME);
             timer.OnTimeChange += Timer_OnTimeChange;
             timer.OnTimeFinished += Timer_OnTimeFinished;
 
@@ -59,20 +64,24 @@ namespace TankWars.Context {
             ITimer timer = (ITimer)source;
             timer.OnTimeFinished -= Timer_OnTimeFinished;
             timer.OnTimeChange -= Timer_OnTimeChange;
+            Debug.Log("Time finished");
+            tankUI.TriggerDestruction();
         }
 
         private void Timer_OnTimeChange(float millisecondsRemaining) {
-            Debug.Log("xdxx");
+            Debug.Log("Time changed");
             timerUI.RemainingTime = millisecondsRemaining;
         }
 
         private void BoxesGoalAchieved(BoxGoal sender) {
             sender.onGoalAchieved -= BoxesGoalAchieved;
+            scoreUI.AddScore(300);
             Debug.Log("Boxes broken! Goal achieved!");
         }
 
         private void PathsGoalAchieved(PathGoal sender) {
             sender.onGoalAchieved -= PathsGoalAchieved;
+            scoreUI.AddScore(100);
             Debug.Log("Path points reached! Goal achieved!");
         }
 

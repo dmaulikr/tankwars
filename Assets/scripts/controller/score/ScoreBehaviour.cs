@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ScoreBehaviour : MonoBehaviour {
 
-    private int score;
     public int Score { get; set; }
     private Text ScoreText;
 
@@ -16,6 +15,10 @@ public class ScoreBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        ScoreText.text = "Score " + score.ToString();
+        ScoreText.text = "Score " + Score.ToString();
+    }
+
+    public void AddScore(int score) {
+        Score += score;
     }
 }
