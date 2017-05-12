@@ -15,6 +15,7 @@ public class CannonBehaviour : MonoBehaviour {
             explosionAudio.Play();
             Rigidbody rocket = Instantiate(rocketPrefab, transform.position, transform.rotation);
             rocket.AddForce(transform.forward * missileForce, ForceMode.Impulse);
+            //rocket.AddForceAtPosition(transform.forward * missileForce, (rocket.transform.position + (rocket.transform.forward * 1)), ForceMode.Impulse);
         }
     }
 }

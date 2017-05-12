@@ -61,6 +61,7 @@ namespace TankWars.Controller.Tank {
         private void FixPosition() {
             Vector3 actualRotation = transform.rotation.eulerAngles;
             actualRotation.x = 0;
+            actualRotation.z = 0;
             transform.rotation = Quaternion.Euler(actualRotation);
             transform.position += new Vector3(0, 1, 0);
         }

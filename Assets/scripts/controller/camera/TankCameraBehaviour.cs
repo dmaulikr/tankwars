@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TankCameraBehaviour : MonoBehaviour {
 
+    public Transform reference;
     public Transform target;
     public float up = 5;
     public float back = 10;
@@ -18,7 +19,7 @@ public class TankCameraBehaviour : MonoBehaviour {
 	void Update () {
         // Obtenemos 
         Vector3 sourcePosition = transform.position;
-        Vector3 targetPosition = target.position + -target.transform.forward * back + target.transform.up * up;
+        Vector3 targetPosition = reference.position + -reference.transform.forward * back + reference.transform.up * up;
         
         // Movimiento directo
         //transform.position = destinyPosition;
