@@ -15,5 +15,6 @@ namespace TankWars.Controller.Timer {
         event TimeFinished OnTimeFinished;
         event TimeStopped OnTimeStopped;
         void StopTimer();
+        void AddMilliseconds(float milliseconds);
     }
 }

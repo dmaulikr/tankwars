@@ -73,6 +73,7 @@ public class TankTextBehaviour : MonoBehaviour {
         yield return new WaitForSeconds(3f);
         Text textComponent = GetComponent<Text>();
         textComponent.text = " -- Missions achieved --\r\n Congrats! All missions done!";
+        context.getTimer().StopTimer();
         yield return null;
     }
 }

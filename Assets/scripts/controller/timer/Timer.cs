@@ -44,14 +44,13 @@ namespace TankWars.Controller.Timer {
 
         private void OnTimerEvent(object source, System.Timers.ElapsedEventArgs e) {
             timeRemaining -= (float)timer.Interval;
+            if(OnTimeChange != null) {
+                OnTimeChange(timeRemaining);
+            }
             if(timeRemaining <= 0) {
-                timer.Elapsed -= ((Timer)source).OnTimerEvent;
+                ((System.Timers.Timer)source).Elapsed -= OnTimerEvent;
                 if(OnTimeFinished != null) {
                     OnTimeFinished(this);
-                }
-            } else {
-                if(OnTimeFinished != null) {
-                    OnTimeChange(timeRemaining);
                 }
             }
         }
@@ -61,6 +60,10 @@ namespace TankWars.Controller.Timer {
             if(OnTimeStopped != null) {
                 OnTimeStopped(this);
             }
+        }
+
+        public void AddMilliseconds(float milliseconds) {
+            timeRemaining += milliseconds;
         }
     }
 }
