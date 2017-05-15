@@ -89,6 +89,24 @@ namespace TankWars.Context {
             int index = teleporTationService.randomPortalIndex(magickPortalList.Count, magickPortalList.IndexOf(sourceMagickPortal));
             return magickPortalList[index];
         }
+
+        public void TriggerGameOver() {
+            StartCoroutine(GameOver());
+        }
+
+        private IEnumerator GameOver() {
+            yield return new WaitForSeconds(4f);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
+            yield return null;
+        }
+
+
+        private void Update() {
+            if(Input.GetKeyDown(KeyCode.Keypad0)) {
+                Debug.Log("Pantalla capturada");
+                Application.CaptureScreenshot("Screenshot.png", 2);
+            }
+        }
     }
 }
 

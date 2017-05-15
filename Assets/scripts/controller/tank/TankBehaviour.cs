@@ -5,6 +5,7 @@ using UnityEngine;
 using TankWars.Context;
 using TankWars.Model;
 using UnityEngine.UI;
+using System;
 
 namespace TankWars.Controller.Tank {
 
@@ -104,6 +105,10 @@ namespace TankWars.Controller.Tank {
             lifeSlider.value = 0;
             //Destroy(gameObject);
             Debug.Log("Tank destroyed!");
+            context.TriggerGameOver();
+
         }
+
+        
     }
 }
