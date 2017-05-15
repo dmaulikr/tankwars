@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyCannonBehaviour : MonoBehaviour {
 
-    // Fire
     public Rigidbody rocketPrefab;
     public float missileForce = 20f;
 
-
     private void Start() {
-        InvokeRepeating("EnemyFire", 0, 1f);
+        System.Random rnd = new System.Random();
+        float fireRate = ((float)rnd.Next(10, 30))/10;
+        InvokeRepeating("EnemyFire", 0, fireRate);
     }
 
     private void EnemyFire() {

@@ -40,6 +40,7 @@ namespace TankWars.Controller.Tank {
 
         // Update is called once per frame
         void Update() {
+            /*
             if(Input.GetKey(KeyCode.UpArrow)) {
                 transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
             }
@@ -52,7 +53,15 @@ namespace TankWars.Controller.Tank {
             if(Input.GetKey(KeyCode.RightArrow)) {
                 transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
             }
-            if(Input.GetKey(KeyCode.Backspace)) {
+            */
+
+            float x = Input.GetAxis("Horizontal");
+            float y = Input.GetAxis("Vertical");
+
+            transform.Translate(Vector3.forward * y * moveSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.up, x * turnSpeed * Time.deltaTime);
+
+            if (Input.GetKey(KeyCode.Backspace)) {
                 FixPosition();
             }
 

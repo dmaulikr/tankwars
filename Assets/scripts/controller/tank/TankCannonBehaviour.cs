@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class TankCannonBehaviour : MonoBehaviour {
 
+    private int moveSmooth = 70000;
+    private int height;
 
-    [SerializeField]
-    private int moveSmooth = 300;
-	
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
+        height = Screen.height;
+    }
+
+
+    // Update is called once per frame
+    void Update () {
         Quaternion actualRotation = transform.localRotation;
-        transform.Rotate(Vector3.forward, Input.GetAxis("Mouse Y") * moveSmooth * Time.deltaTime);
+        transform.Rotate(Vector3.forward, (Input.GetAxis("Mouse Y") / height) * moveSmooth * Time.deltaTime);
     }
 }

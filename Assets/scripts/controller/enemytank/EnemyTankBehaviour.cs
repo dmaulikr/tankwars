@@ -63,7 +63,7 @@ namespace TankWars.Controller.Tank {
             explosion.transform.localScale += new Vector3(1f, 1f, 1f);
             explosion.SetActive(true);
             gameObject.SetActive(false);
-            //Destroy(gameObject);
+            Destroy(gameObject);
             Debug.Log("Enemy destroyed!");
         }
     }
