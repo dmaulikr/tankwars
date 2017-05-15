@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class MissileBehaviour : MonoBehaviour {
 
-    // Duration of missile
-    public GameObject explosionPrefab;
-    
-    // Timeout destroy
-    /*
-    public float duration = 3f;
-    void Start() {
-        Destroy(gameObject, duration);
+    [SerializeField]
+    private GameObject explosionPrefab;
+    private Rigidbody rigid;
+
+    private void Awake() {
+        rigid = GetComponent<Rigidbody>();
+
     }
-    */
+
+    private void Update() {
+        transform.rotation = Quaternion.LookRotation(rigid.velocity);
+
+    }
 
     private void OnCollisionEnter(Collision collision) {
         GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);

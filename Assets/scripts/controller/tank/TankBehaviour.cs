@@ -25,8 +25,10 @@ namespace TankWars.Controller.Tank {
         private const int DEFAULT_TANK_LIFE = 500;
 
         // Movement
-        public float moveSpeed = 10f;
-        public float turnSpeed = 50f;
+        [SerializeField]
+        private float moveSpeed = 10f;
+        [SerializeField]
+        private float turnSpeed = 50f;
 
         private TankWars.Model.ITank tank;
 
@@ -106,7 +108,6 @@ namespace TankWars.Controller.Tank {
             //Destroy(gameObject);
             Debug.Log("Tank destroyed!");
             context.TriggerGameOver();
-
         }
 
         

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CannonBehaviour : MonoBehaviour {
 
-    // Fire
-    public Rigidbody rocketPrefab;
-    public float missileForce = 20f;
-
+    [SerializeField]
+    private Rigidbody rocketPrefab;
+    [SerializeField]
+    private float missileForce = 20f;
 
     private void Update() {
         if(Input.GetButtonDown("Fire2")) {

@@ -8,6 +8,7 @@ using TankWars.Model;
 using TankWars.Service;
 using TankWars.Controller.Timer;
 using TankWars.Controller.Tank;
+using UnityEngine.SceneManagement;
 
 namespace TankWars.Context {
     public class GameContext : MonoBehaviour, ITankFactory, IGoalsFactory {
@@ -96,7 +97,7 @@ namespace TankWars.Context {
 
         private IEnumerator GameOver() {
             yield return new WaitForSeconds(4f);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
+            SceneManager.LoadScene("GameOverScene");
             yield return null;
         }
 
@@ -105,6 +106,10 @@ namespace TankWars.Context {
             if(Input.GetKeyDown(KeyCode.Keypad0)) {
                 Debug.Log("Pantalla capturada");
                 Application.CaptureScreenshot("Screenshot.png", 2);
+            }
+
+            if(Input.GetKeyDown(KeyCode.Escape)) {
+                SceneManager.LoadScene("MenuScene");
             }
         }
     }

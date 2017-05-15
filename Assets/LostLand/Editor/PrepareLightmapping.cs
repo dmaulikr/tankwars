@@ -17,8 +17,9 @@ public class PrepareLightmapping : ScriptableObject {
 				// Set Cast Shadows and Receive Shadows flags on all foliage layer
 				if( obj.layer == LayerMask.NameToLayer("Foliage") )
 				{
-					obj.GetComponent<Renderer>().castShadows = true;
-					obj.GetComponent<Renderer>().receiveShadows = true;
+					//obj.GetComponent<Renderer>().castShadows = true;
+                    obj.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+                    obj.GetComponent<Renderer>().receiveShadows = true;
 				}
 			}
 			

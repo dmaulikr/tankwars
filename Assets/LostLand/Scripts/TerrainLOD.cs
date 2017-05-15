@@ -66,11 +66,12 @@ public class TerrainLOD : MonoBehaviour {
 		else // This is a mesh from the other LODS, mark it as invisible.
 		{
 			gameObject.GetComponent<Renderer>().enabled = false;
-			gameObject.GetComponent<Renderer>().castShadows = false;
-			//Debug.Log("[TerrainLOD] Invisible LOD mesh: " + gameObject.name);
-			
-			// Remove this script from the game object to avoid calling Update.
-			TerrainLOD lod_script = gameObject.GetComponent(typeof(TerrainLOD)) as TerrainLOD;
+			//gameObject.GetComponent<Renderer>().castShadows = false;
+            gameObject.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            //Debug.Log("[TerrainLOD] Invisible LOD mesh: " + gameObject.name);
+
+            // Remove this script from the game object to avoid calling Update.
+            TerrainLOD lod_script = gameObject.GetComponent(typeof(TerrainLOD)) as TerrainLOD;
 			if(lod_script)
 			{
 				//Debug.Log("[TerrainLOD] Remove LOD script");

@@ -7,7 +7,8 @@ public class ApplyNormalsOnLoad : AssetPostprocessor
 	
    	static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromPath)
    	{
-        foreach (string i in importedAssets)
+        return;
+        /*foreach (string i in importedAssets)
         {
 			// *******************************************
 			// THIS SCRIPT IS DEPRECATED!!!!
@@ -39,7 +40,7 @@ public class ApplyNormalsOnLoad : AssetPostprocessor
 					}
 				}
 			}
-        }
+        }*/
 		//Debug.Log( "Detail texture assigned" );
    	}	
 }

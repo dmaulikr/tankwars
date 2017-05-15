@@ -34,8 +34,9 @@ public class AfterLightmapping : ScriptableObject {
 				// Clear Cast Shadows and Receive Shadows flags on all foliage layer
 				if( obj.layer == LayerMask.NameToLayer("Foliage") )
 				{
-					obj.GetComponent<Renderer>().castShadows = false;
-					obj.GetComponent<Renderer>().receiveShadows = false;
+					//obj.GetComponent<Renderer>().castShadows = false;
+                    obj.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                    obj.GetComponent<Renderer>().receiveShadows = false;
 				}
 			}
 			
